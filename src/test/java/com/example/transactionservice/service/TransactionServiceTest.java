@@ -3,6 +3,8 @@ package com.example.transactionservice.service;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import com.example.transactionservice.model.Transaction;
@@ -36,6 +38,17 @@ class TransactionServiceTest {
 	    service.saveTransaction(second);
 
 	    assertSame(second, repository.findById(1L).get());
+	}
+	
+	@Test
+	void findTransactionIdsByTypeWithNoMatches() {
+
+	    TransactionRepository repository = new TransactionRepository();
+	    TransactionService service = new TransactionService(repository);
+
+	    List<Long> result = service.findTransactionIdsByType("food");
+
+	    assertTrue(result.isEmpty());
 	}
 	
 }
