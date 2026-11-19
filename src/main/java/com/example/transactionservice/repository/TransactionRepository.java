@@ -25,6 +25,8 @@ public class TransactionRepository {
     }
     
     public List<Transaction> findByType(String type) {
-		return Collections.emptyList();
+    	return transactions.values().stream()
+                .filter(transaction -> transaction.getType().equals(type))
+                .toList();
 	}
 }
