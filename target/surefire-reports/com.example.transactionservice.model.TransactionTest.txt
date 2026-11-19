@@ -1,0 +1,76 @@
+-------------------------------------------------------------------------------
+Test set: com.example.transactionservice.model.TransactionTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.071 s <<< FAILURE! -- in com.example.transactionservice.model.TransactionTest
+com.example.transactionservice.model.TransactionTest.test02_createTwoTransactionsWithBasicAttributes -- Time elapsed: 0.047 s <<< FAILURE!
+org.opentest4j.MultipleFailuresError: 
+Multiple Failures (3 failures)
+	org.opentest4j.AssertionFailedError: expected: <2> but was: <1>
+	org.opentest4j.AssertionFailedError: expected: <250.5> but was: <100.0>
+	org.opentest4j.AssertionFailedError: expected: <shopping> but was: <cars>
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:80)
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:44)
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:38)
+	at org.junit.jupiter.api.Assertions.assertAll(Assertions.java:3037)
+	at com.example.transactionservice.model.TransactionTest.test02_createTwoTransactionsWithBasicAttributes(TransactionTest.java:36)
+	Suppressed: org.opentest4j.AssertionFailedError: expected: <2> but was: <1>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
+		at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:168)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:163)
+		at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:662)
+		at com.example.transactionservice.model.TransactionTest.lambda$test02_createTwoTransactionsWithBasicAttributes$4(TransactionTest.java:41)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:575)
+		at java.base/java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:260)
+		at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:616)
+		at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:622)
+		at java.base/java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:627)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 4 more
+	Suppressed: org.opentest4j.AssertionFailedError: expected: <250.5> but was: <100.0>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
+		at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:72)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:67)
+		at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:924)
+		at com.example.transactionservice.model.TransactionTest.lambda$test02_createTwoTransactionsWithBasicAttributes$5(TransactionTest.java:42)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:575)
+		at java.base/java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:260)
+		at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:616)
+		at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:622)
+		at java.base/java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:627)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 4 more
+	Suppressed: org.opentest4j.AssertionFailedError: expected: <shopping> but was: <cars>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
+		at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:184)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:179)
+		at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1188)
+		at com.example.transactionservice.model.TransactionTest.lambda$test02_createTwoTransactionsWithBasicAttributes$6(TransactionTest.java:43)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:575)
+		at java.base/java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:260)
+		at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:616)
+		at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:622)
+		at java.base/java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:627)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 4 more
+
