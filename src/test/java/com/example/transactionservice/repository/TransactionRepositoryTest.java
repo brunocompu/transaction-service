@@ -145,6 +145,28 @@ public class TransactionRepositoryTest {
 	    assertTrue(result.contains(transaction3));
 	}
 	
+	@Test
+	void test13_findTransactionsByParentId() {
+
+	    TransactionRepository repository = new TransactionRepository();
+
+	    Transaction parent = new Transaction(1L, 100.0, "food", null);
+	    Transaction child1 = new Transaction(2L, 50.0, "clothes", 1L);
+	    Transaction child2 = new Transaction(3L, 25.0, "food", 1L);
+	    Transaction unrelated = new Transaction(4L, 10.0, "food", null);
+
+	    repository.save(parent);
+	    repository.save(child1);
+	    repository.save(child2);
+	    repository.save(unrelated);
+
+	    List<Transaction> result = repository.findByParentId(1L);
+
+	    assertEquals(2, result.size());
+	    assertTrue(result.contains(child1));
+	    assertTrue(result.contains(child2));
+	}
+	
 }
 
 
