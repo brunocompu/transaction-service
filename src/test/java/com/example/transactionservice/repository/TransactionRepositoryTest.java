@@ -1,5 +1,6 @@
 package com.example.transactionservice.repository;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -113,14 +114,15 @@ public class TransactionRepositoryTest {
 	    TransactionRepository repository = new TransactionRepository();
 
 	    Transaction transaction1 = new Transaction(1L, 100.0, "food", null);
-	    Transaction transaction2 = new Transaction(1L, 200.0, "clothes", null);
+	    Transaction transaction2 = new Transaction(2L, 200.0, "clothes", null);
 
 	    repository.save(transaction1);
 	    repository.save(transaction2);
 	    
 	    List<Transaction> result = repository.findByType("food");
 
-	    assertSame(result.get(0), transaction1);
+	    assertEquals(1, result.size());
+	    assertSame(transaction1, result.get(0));
 	}
 	
 }
