@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -80,6 +81,16 @@ public class TransactionRepositoryTest {
 	    repository.save(transaction2);
 
 	    assertSame(transaction2, repository.findById(1L).get());
+	}
+	
+	@Test
+	void test09_findTransactionsByTypeEmptyRepository() {
+
+	    TransactionRepository repository = new TransactionRepository();
+
+	    List<Transaction> result = repository.findByType("food");
+
+	    assertTrue(result.isEmpty());
 	}
 }
 
