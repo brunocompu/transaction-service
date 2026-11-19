@@ -1,8 +1,11 @@
 package com.example.transactionservice.repository;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+
+import com.example.transactionservice.model.Transaction;
 
 
 public class TransactionRepositoryTest {
@@ -11,6 +14,18 @@ public class TransactionRepositoryTest {
         TransactionRepository repository = new TransactionRepository();
 
         assertTrue(repository.isEmpty());
+    }
+	
+	@Test
+    void test04_createRepositoryAndSaveTransaction() {
+        TransactionRepository repository = new TransactionRepository();
+
+        Transaction transaction =
+                new Transaction(1L, 100.0, "cars", null);
+
+        repository.save(transaction);
+
+        assertFalse(repository.isEmpty());
     }
 }
 
