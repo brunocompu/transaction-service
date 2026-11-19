@@ -92,6 +92,16 @@ public class TransactionRepositoryTest {
 
 	    assertTrue(result.isEmpty());
 	}
+	
+	@Test
+	void test010_findTransactionsByTypeWithNoMatches() {
+
+	    TransactionRepository repository = new TransactionRepository();
+
+	    List<Transaction> result = repository.findByType("food");
+
+	    assertTrue(result.isEmpty());
+	}
 }
 
 
