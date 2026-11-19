@@ -125,6 +125,26 @@ public class TransactionRepositoryTest {
 	    assertSame(transaction1, result.get(0));
 	}
 	
+	@Test
+	void test12_findMultipleTransactionsByType() {
+
+	    TransactionRepository repository = new TransactionRepository();
+
+	    Transaction transaction1 = new Transaction(1L, 100.0, "food", null);
+	    Transaction transaction2 = new Transaction(2L, 200.0, "clothes", null);
+	    Transaction transaction3 = new Transaction(3L, 300.0, "food", null);
+
+	    repository.save(transaction1);
+	    repository.save(transaction2);
+	    repository.save(transaction3);
+
+	    List<Transaction> result = repository.findByType("food");
+
+	    assertEquals(2, result.size());
+	    assertTrue(result.contains(transaction1));
+	    assertTrue(result.contains(transaction3));
+	}
+	
 }
 
 
