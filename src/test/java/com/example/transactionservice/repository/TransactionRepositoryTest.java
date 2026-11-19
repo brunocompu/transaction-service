@@ -166,7 +166,6 @@ public class TransactionRepositoryTest {
 	    assertTrue(result.contains(child1));
 	    assertTrue(result.contains(child2));
 	}
-	
 }
 
 

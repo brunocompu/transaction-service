@@ -28,4 +28,12 @@ public class TransactionRepository {
                 .filter(transaction -> transaction.getType().equals(type))
                 .toList();
 	}
+    
+    public List<Transaction> findByParentId(long parentId) {
+        return transactions.values().stream()
+                .filter(transaction -> transaction.getParentId() != null)
+                .filter(transaction -> transaction.getParentId() == parentId)
+                .toList();
+    }
+    
 }
