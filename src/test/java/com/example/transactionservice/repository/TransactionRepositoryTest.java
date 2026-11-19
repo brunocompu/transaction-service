@@ -1,0 +1,15 @@
+package com.example.transactionservice.repository;
+
+import org.junit.jupiter.api.Test;
+
+
+public class TransactionRepositoryTest {
+	@Test
+    void test03_createEmptyRepository() {
+        TransactionRepository repository = new TransactionRepository();
+
+        assertTrue(repository.isEmpty());
+    }
+}
+
+
