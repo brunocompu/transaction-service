@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 
 import com.example.transactionservice.model.Transaction;
@@ -54,6 +56,30 @@ public class TransactionRepositoryTest {
 	
 	    assertSame(transaction1, repository.findById(1L).get());
 	    assertSame(transaction2, repository.findById(2L).get());
+	}
+	
+	@Test
+	void test07_findNonexistentTransaction() {
+
+	    TransactionRepository repository = new TransactionRepository();
+
+	    Optional<Transaction> result = repository.findById(999L);
+
+	    assertTrue(result.isEmpty());
+	}
+	
+	@Test
+	void test08_saveTransactionWithExistingId() {
+
+	    TransactionRepository repository = new TransactionRepository();
+
+	    Transaction transaction1 = new Transaction(1L, 100.0, "food", null);
+	    Transaction transaction2 = new Transaction(1L, 200.0, "clothes", null);
+
+	    repository.save(transaction1);
+	    repository.save(transaction2);
+
+	    assertSame(transaction2, repository.findById(1L).get());
 	}
 }
 
