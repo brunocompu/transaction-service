@@ -1,22 +1,24 @@
 package com.example.transactionservice.repository;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import com.example.transactionservice.model.Transaction;
 
 public class TransactionRepository {
-	private Transaction transaction;
+
+    private final Map<Long, Transaction> transactions = new HashMap<>();
 
     public boolean isEmpty() {
-        return transaction == null;
+        return transactions.isEmpty();
     }
 
     public void save(Transaction transaction) {
-        this.transaction = transaction;
+        transactions.put(transaction.getId(), transaction);
     }
 
     public Optional<Transaction> findById(long id) {
-        return Optional.ofNullable(transaction);
+        return Optional.ofNullable(transactions.get(id));
     }
-
 }
