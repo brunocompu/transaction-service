@@ -94,7 +94,7 @@ public class TransactionRepositoryTest {
 	}
 	
 	@Test
-	void test010_findTransactionsByTypeWithNoMatches() {
+	void test10_findTransactionsByTypeWithNoMatches() {
 
 	    TransactionRepository repository = new TransactionRepository();
 
@@ -105,6 +105,22 @@ public class TransactionRepositoryTest {
 	    List<Transaction> result = repository.findByType("food");
 
 	    assertTrue(result.isEmpty());
+	}
+	
+	@Test
+	void test11_findTransactionsByTypeWithOneMatch() {
+
+	    TransactionRepository repository = new TransactionRepository();
+
+	    Transaction transaction1 = new Transaction(1L, 100.0, "food", null);
+	    Transaction transaction2 = new Transaction(1L, 200.0, "clothes", null);
+
+	    repository.save(transaction1);
+	    repository.save(transaction2);
+	    
+	    List<Transaction> result = repository.findByType("food");
+
+	    assertSame(result.get(0), transaction1);
 	}
 	
 }
