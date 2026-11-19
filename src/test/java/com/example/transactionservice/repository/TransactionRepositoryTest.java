@@ -98,10 +98,15 @@ public class TransactionRepositoryTest {
 
 	    TransactionRepository repository = new TransactionRepository();
 
+	    Transaction transaction = new Transaction(1L, 200.0, "clothes", null);
+	    
+	    repository.save(transaction);
+	    
 	    List<Transaction> result = repository.findByType("food");
 
 	    assertTrue(result.isEmpty());
 	}
+	
 }
 
 
