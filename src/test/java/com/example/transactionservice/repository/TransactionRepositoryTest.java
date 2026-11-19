@@ -41,6 +41,20 @@ public class TransactionRepositoryTest {
         assertTrue(repository.findById(1L).isPresent());
         assertSame(transaction, repository.findById(1L).get());
     }
+	
+	@Test
+	void test06_saveAndFindTwoTransactions() {
+	    TransactionRepository repository = new TransactionRepository();
+	
+	    Transaction transaction1 = new Transaction(1L, 100.0, "food", null);
+	    Transaction transaction2 = new Transaction(2L, 50.0, "clothes", null);
+	
+	    repository.save(transaction1);
+	    repository.save(transaction2);
+	
+	    assertSame(transaction1, repository.findById(1L).get());
+	    assertSame(transaction2, repository.findById(2L).get());
+	}
 }
 
 
