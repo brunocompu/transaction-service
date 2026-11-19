@@ -166,6 +166,22 @@ public class TransactionRepositoryTest {
 	    assertTrue(result.contains(child1));
 	    assertTrue(result.contains(child2));
 	}
+	
+	@Test
+	void test14_findTransactionsByParentIdWithNoMatches() {
+
+	    TransactionRepository repository = new TransactionRepository();
+
+	    Transaction transaction1 = new Transaction(1L, 100.0, "food", null);
+	    Transaction transaction2 = new Transaction(2L, 50.0, "clothes", null);
+
+	    repository.save(transaction1);
+	    repository.save(transaction2);
+
+	    List<Transaction> result = repository.findByParentId(1L);
+
+	    assertTrue(result.isEmpty());
+	}
 }
 
 
