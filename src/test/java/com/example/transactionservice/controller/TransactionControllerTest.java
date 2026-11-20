@@ -92,4 +92,22 @@ class TransactionControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json("[1, 3]"));
     }
+    
+    @Test
+    void calculateTransactionSum() throws Exception {
+        service.saveTransaction(new Transaction(1L, 100.0, "food", null));
+        service.saveTransaction(new Transaction(2L, 50.0, "clothes", 1L));
+        service.saveTransaction(new Transaction(3L, 10.0, "clothes", 1L));
+        service.saveTransaction(new Transaction(4L, 25.0, "books", 2L));
+        service.saveTransaction(new Transaction(5L, 500.0, "games", null));
+        service.saveTransaction(new Transaction(6L, 200.0, "games", 5L));
+
+        mockMvc.perform(get("/transactions/sum/1"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                        {
+                            "sum": 185.0
+                        }
+                        """));
+    }
 }
