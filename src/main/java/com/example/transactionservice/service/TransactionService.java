@@ -25,6 +25,7 @@ public class TransactionService {
     }
     
     public double calculateSum(long transactionId) {
+
         Transaction transaction = repository.findById(transactionId).get();
 
         double sum = transaction.getAmount();
@@ -32,9 +33,9 @@ public class TransactionService {
         List<Transaction> children = repository.findByParentId(transactionId);
 
         for (Transaction child : children) {
-            sum += child.getAmount();
+            sum += calculateSum(child.getId());
         }
 
         return sum;
-    }    
+    }
 }
