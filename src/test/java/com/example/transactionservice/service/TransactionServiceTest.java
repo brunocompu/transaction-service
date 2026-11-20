@@ -121,4 +121,25 @@ class TransactionServiceTest {
 
 	    assertEquals(150.0, result, 0.001);
 	}
+	
+	@Test
+	void calculateSumWithMultipleChildren() {
+
+	    TransactionRepository repository = new TransactionRepository();
+	    TransactionService service = new TransactionService(repository);
+
+	    Transaction parent = new Transaction(1L, 100.0, "food", null);
+	    Transaction child1 = new Transaction(2L, 50.0, "clothes", 1L);
+	    Transaction child2 = new Transaction(3L, 25.0, "food", 1L);
+	    Transaction child3 = new Transaction(4L, 10.0, "books", 1L);
+
+	    service.saveTransaction(parent);
+	    service.saveTransaction(child1);
+	    service.saveTransaction(child2);
+	    service.saveTransaction(child3);
+
+	    double result = service.calculateSum(1L);
+
+	    assertEquals(185.0, result, 0.001);
+	}
 }
