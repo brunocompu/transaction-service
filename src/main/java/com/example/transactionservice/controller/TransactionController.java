@@ -21,7 +21,7 @@ public class TransactionController {
     }
 
     @PutMapping("/{transactionId}")
-    public ResponseEntity<Void> saveTransaction(
+    public ResponseEntity<Map<String, String>> saveTransaction(
             @PathVariable long transactionId,
             @RequestBody TransactionRequest request) {
 
@@ -34,7 +34,7 @@ public class TransactionController {
 
         service.saveTransaction(transaction);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(Map.of("status", "ok"));
     }
     
     @GetMapping("/types/{type}")

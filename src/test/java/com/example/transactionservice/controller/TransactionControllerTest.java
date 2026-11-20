@@ -44,7 +44,12 @@ class TransactionControllerTest {
                             "parent_id": 5
                         }
                         """))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+		                {
+		                    "status": "ok"
+		                }
+                """));
 
         Transaction transaction = repository.findById(10L).orElseThrow();
 
@@ -64,7 +69,12 @@ class TransactionControllerTest {
                             "type": "books"
                         }
                         """))
-                .andExpect(status().isOk());
+			    .andExpect(status().isOk())
+			    .andExpect(content().json("""
+			           {
+			               "status": "ok"
+			           }
+			    """));
 
         Transaction transaction = repository.findById(20L).orElseThrow();
 
