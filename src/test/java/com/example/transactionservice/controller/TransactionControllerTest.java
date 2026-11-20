@@ -13,6 +13,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.example.transactionservice.repository.TransactionRepository;
 import com.example.transactionservice.model.Transaction;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -63,5 +65,13 @@ class TransactionControllerTest {
         assertEquals(75.0, transaction.getAmount());
         assertEquals("books", transaction.getType());
         assertNull(transaction.getParentId());
+    }
+    
+    @Test
+    void findTransactionIdsByTypeWithoutMatches() throws Exception {
+
+        mockMvc.perform(get("/transactions/types/food"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[]"));
     }
 }
