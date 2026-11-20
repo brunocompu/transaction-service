@@ -104,4 +104,21 @@ class TransactionServiceTest {
 
 	    assertEquals(100.0, result, 0.001);
 	}
+	
+	@Test
+	void calculateSumWithOneChild() {
+
+	    TransactionRepository repository = new TransactionRepository();
+	    TransactionService service = new TransactionService(repository);
+
+	    Transaction parent = new Transaction(1L, 100.0, "food", null);
+	    Transaction child = new Transaction(2L, 50.0, "clothes", 1L);
+
+	    service.saveTransaction(parent);
+	    service.saveTransaction(child);
+
+	    double result = service.calculateSum(1L);
+
+	    assertEquals(150.0, result, 0.001);
+	}
 }
