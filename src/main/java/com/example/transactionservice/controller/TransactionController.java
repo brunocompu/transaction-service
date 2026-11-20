@@ -8,6 +8,7 @@ import com.example.transactionservice.model.Transaction;
 import com.example.transactionservice.service.TransactionService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/transactions")
@@ -43,5 +44,14 @@ public class TransactionController {
         List<Long> transactionIds = service.findTransactionIdsByType(type);
 
         return ResponseEntity.ok(transactionIds);
+    }
+    
+    @GetMapping("/sum/{transactionId}")
+    public ResponseEntity<Map<String, Double>> calculateSum(
+            @PathVariable long transactionId) {
+
+        double sum = service.calculateSum(transactionId);
+
+        return ResponseEntity.ok(Map.of("sum", sum));
     }
 }
