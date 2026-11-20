@@ -1,6 +1,10 @@
 package com.example.transactionservice.service;
 
 import com.example.transactionservice.repository.TransactionRepository;
+
+import java.util.Collections;
+import java.util.List;
+
 import com.example.transactionservice.model.Transaction;
 
 public class TransactionService {
@@ -13,5 +17,9 @@ public class TransactionService {
     
     public void saveTransaction(Transaction transaction) {
         repository.save(transaction);
+    }
+    
+    public List<Long> findTransactionIdsByType(String type) {
+        return Collections.emptyList();
     }
 }
