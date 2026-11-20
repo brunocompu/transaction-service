@@ -2,7 +2,6 @@ package com.example.transactionservice.service;
 
 import com.example.transactionservice.repository.TransactionRepository;
 
-import java.util.Collections;
 import java.util.List;
 
 import com.example.transactionservice.model.Transaction;
@@ -20,6 +19,8 @@ public class TransactionService {
     }
     
     public List<Long> findTransactionIdsByType(String type) {
-        return Collections.emptyList();
+        return repository.findByType(type).stream()
+                .map(Transaction::getId)
+                .toList();
     }
 }
