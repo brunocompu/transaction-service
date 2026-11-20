@@ -15,6 +15,7 @@ import com.example.transactionservice.repository.TransactionRepository;
 import com.example.transactionservice.model.Transaction;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import com.example.transactionservice.service.TransactionService;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -25,6 +26,9 @@ class TransactionControllerTest {
 
     @Autowired
     private TransactionRepository repository;
+    
+    @Autowired
+    private TransactionService service;
 
     @Test
     void saveTransaction() throws Exception {
@@ -75,5 +79,15 @@ class TransactionControllerTest {
                 .andExpect(content().json("[]"));
     }
     
-    
+    @Test
+    void findTransactionIdsByTypeWithMatches() throws Exception {
+
+        service.saveTransaction(new Transaction(1L, 100.0, "food", null));
+        service.saveTransaction(new Transaction(2L, 50.0, "clothes", null));
+        service.saveTransaction(new Transaction(3L, 75.0, "food", 1L));
+
+        mockMvc.perform(get("/transactions/types/food"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[1, 3]"));
+    }
 }
