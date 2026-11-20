@@ -1,13 +1,9 @@
 package com.example.transactionservice.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
-
 import com.example.transactionservice.model.Transaction;
 import com.example.transactionservice.repository.TransactionRepository;
 
