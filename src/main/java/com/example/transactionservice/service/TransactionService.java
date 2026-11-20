@@ -23,4 +23,8 @@ public class TransactionService {
                 .map(Transaction::getId)
                 .toList();
     }
+    
+    public double calculateSum(long transactionId) {
+        return 100.0;
+    }
 }
