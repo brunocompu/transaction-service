@@ -5,7 +5,9 @@ import com.example.transactionservice.repository.TransactionRepository;
 import java.util.List;
 
 import com.example.transactionservice.model.Transaction;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TransactionService {
 
     private final TransactionRepository repository;
