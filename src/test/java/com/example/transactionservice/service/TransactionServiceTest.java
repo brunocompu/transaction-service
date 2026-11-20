@@ -90,4 +90,18 @@ class TransactionServiceTest {
 	    assertTrue(result.contains(1L));
 	    assertTrue(result.contains(3L));
 	}
+	
+	@Test
+	void calculateSumWithoutChildren() {
+
+	    TransactionRepository repository = new TransactionRepository();
+	    TransactionService service = new TransactionService(repository);
+
+	    Transaction transaction = new Transaction(1L, 100.0, "food", null);
+	    service.saveTransaction(transaction);
+
+	    double result = service.calculateSum(1L);
+
+	    assertEquals(100.0, result, 0.001);
+	}
 }
