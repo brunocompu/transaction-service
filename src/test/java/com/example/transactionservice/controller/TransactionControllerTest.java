@@ -44,4 +44,24 @@ class TransactionControllerTest {
         assertEquals("food", transaction.getType());
         assertEquals(5L, transaction.getParentId());
     }
+    
+    @Test
+    void saveTransactionWithoutParent() throws Exception {
+
+        mockMvc.perform(put("/transactions/20")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                        {
+                            "amount": 75.0,
+                            "type": "books"
+                        }
+                        """))
+                .andExpect(status().isOk());
+
+        Transaction transaction = repository.findById(20L).orElseThrow();
+
+        assertEquals(75.0, transaction.getAmount());
+        assertEquals("books", transaction.getType());
+        assertNull(transaction.getParentId());
+    }
 }
