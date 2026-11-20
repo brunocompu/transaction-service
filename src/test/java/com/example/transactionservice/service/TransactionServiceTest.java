@@ -1,5 +1,6 @@
 package com.example.transactionservice.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -49,6 +50,24 @@ class TransactionServiceTest {
 	    List<Long> result = service.findTransactionIdsByType("food");
 
 	    assertTrue(result.isEmpty());
+	}
+	
+	@Test
+	void findTransactionIdsByTypeWithOneMatch() {
+
+	    TransactionRepository repository = new TransactionRepository();
+	    TransactionService service = new TransactionService(repository);
+
+	    Transaction transaction1 = new Transaction(1L, 100.0, "food", null);
+	    Transaction transaction2 = new Transaction(2L, 200.0, "clothes", null);
+
+	    service.saveTransaction(transaction1);
+	    service.saveTransaction(transaction2);
+
+	    List<Long> result = service.findTransactionIdsByType("food");
+
+	    assertEquals(1, result.size());
+	    assertEquals(1L, result.get(0));
 	}
 	
 }
