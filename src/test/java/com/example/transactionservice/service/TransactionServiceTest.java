@@ -142,4 +142,25 @@ class TransactionServiceTest {
 
 	    assertEquals(185.0, result, 0.001);
 	}
+	
+	@Test
+	void calculateSumWithNestedChildren() {
+
+	    TransactionRepository repository = new TransactionRepository();
+	    TransactionService service = new TransactionService(repository);
+
+	    Transaction transaction1 = new Transaction(1L, 100.0, "food", null);
+	    Transaction transaction2 = new Transaction(2L, 50.0, "clothes", 1L);
+	    Transaction transaction3 = new Transaction(3L, 25.0, "books", 2L);
+	    Transaction transaction4 = new Transaction(4L, 10.0, "games", 3L);
+
+	    service.saveTransaction(transaction1);
+	    service.saveTransaction(transaction2);
+	    service.saveTransaction(transaction3);
+	    service.saveTransaction(transaction4);
+
+	    double result = service.calculateSum(1L);
+
+	    assertEquals(185.0, result, 0.001);
+	}
 }
