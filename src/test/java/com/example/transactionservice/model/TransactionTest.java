@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TransactionTest {
 
     @Test
-    void test01_createTransactionWithBasicAttributes() {
+    void createTransactionWithBasicAttributes() {
         long id = 1L;
         double amount = 100.0;
         String type = "cars";
@@ -21,7 +21,7 @@ class TransactionTest {
     }
     
     @Test
-    void test02_createTwoTransactionsWithBasicAttributes() {
+    void createTwoTransactionsWithBasicAttributes() {
         long id_1 = 1L;
         long id_2 = 2L;
         double amount_1 = 100.0;

@@ -15,14 +15,14 @@ import com.example.transactionservice.model.Transaction;
 
 public class TransactionRepositoryTest {
 	@Test
-    void test03_createEmptyRepository() {
+	void createEmptyRepository() {
         TransactionRepository repository = new TransactionRepository();
 
         assertTrue(repository.isEmpty());
     }
 	
 	@Test
-    void test04_createRepositoryAndSaveTransaction() {
+	void createRepositoryAndSaveTransaction() {
         TransactionRepository repository = new TransactionRepository();
 
         Transaction transaction =
@@ -34,7 +34,7 @@ public class TransactionRepositoryTest {
     }
 	
 	@Test
-    void test05_saveAndFindTransactionById() {
+	void saveAndFindTransactionById() {
         TransactionRepository repository = new TransactionRepository();
 
         Transaction transaction =
@@ -47,7 +47,7 @@ public class TransactionRepositoryTest {
     }
 	
 	@Test
-	void test06_saveAndFindTwoTransactions() {
+	void saveAndFindTwoTransactions() {
 	    TransactionRepository repository = new TransactionRepository();
 	
 	    Transaction transaction1 = new Transaction(1L, 100.0, "food", null);
@@ -61,7 +61,7 @@ public class TransactionRepositoryTest {
 	}
 	
 	@Test
-	void test07_findNonexistentTransaction() {
+	void findNonexistentTransaction() {
 
 	    TransactionRepository repository = new TransactionRepository();
 
@@ -71,7 +71,7 @@ public class TransactionRepositoryTest {
 	}
 	
 	@Test
-	void test08_saveTransactionWithExistingId() {
+	void saveTransactionWithExistingId() {
 
 	    TransactionRepository repository = new TransactionRepository();
 
@@ -85,7 +85,7 @@ public class TransactionRepositoryTest {
 	}
 	
 	@Test
-	void test09_findTransactionsByTypeEmptyRepository() {
+	void findTransactionsByTypeEmptyRepository() {
 
 	    TransactionRepository repository = new TransactionRepository();
 
@@ -95,7 +95,7 @@ public class TransactionRepositoryTest {
 	}
 	
 	@Test
-	void test10_findTransactionsByTypeWithNoMatches() {
+	void findTransactionsByTypeWithNoMatches() {
 
 	    TransactionRepository repository = new TransactionRepository();
 
@@ -109,7 +109,7 @@ public class TransactionRepositoryTest {
 	}
 	
 	@Test
-	void test11_findTransactionsByTypeWithOneMatch() {
+	void findTransactionsByTypeWithOneMatch() {
 
 	    TransactionRepository repository = new TransactionRepository();
 
@@ -126,7 +126,7 @@ public class TransactionRepositoryTest {
 	}
 	
 	@Test
-	void test12_findMultipleTransactionsByType() {
+	void findMultipleTransactionsByType() {
 
 	    TransactionRepository repository = new TransactionRepository();
 
@@ -146,7 +146,7 @@ public class TransactionRepositoryTest {
 	}
 	
 	@Test
-	void test13_findTransactionsByParentId() {
+	void findTransactionsByParentId() {
 
 	    TransactionRepository repository = new TransactionRepository();
 
@@ -168,7 +168,7 @@ public class TransactionRepositoryTest {
 	}
 	
 	@Test
-	void test14_findTransactionsByParentIdWithNoMatches() {
+	void findTransactionsByParentIdWithNoMatches() {
 
 	    TransactionRepository repository = new TransactionRepository();
 
