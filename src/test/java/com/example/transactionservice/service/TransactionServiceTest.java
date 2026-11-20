@@ -163,4 +163,30 @@ class TransactionServiceTest {
 
 	    assertEquals(185.0, result, 0.001);
 	}
+	
+	@Test
+	void calculateSumExcludesUnrelatedTransactions() {
+
+	    TransactionRepository repository = new TransactionRepository();
+	    TransactionService service = new TransactionService(repository);
+
+	    Transaction parent = new Transaction(1L, 100.0, "food", null);
+	    Transaction child1 = new Transaction(2L, 50.0, "clothes", 1L);
+	    Transaction child2 = new Transaction(3L, 10.0, "clothes", 1L);
+	    Transaction grandchild = new Transaction(4L, 25.0, "books", 2L);
+
+	    Transaction unrelated = new Transaction(5L, 500.0, "games", null);
+	    Transaction unrelatedChild = new Transaction(6L, 200.0, "games", 5L);
+
+	    service.saveTransaction(parent);
+	    service.saveTransaction(child1);
+	    service.saveTransaction(child2);
+	    service.saveTransaction(grandchild);
+	    service.saveTransaction(unrelated);
+	    service.saveTransaction(unrelatedChild);
+
+	    double result = service.calculateSum(1L);
+
+	    assertEquals(185.0, result, 0.001);
+	}
 }
