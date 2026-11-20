@@ -7,7 +7,6 @@ import com.example.transactionservice.dto.TransactionRequest;
 import com.example.transactionservice.model.Transaction;
 import com.example.transactionservice.service.TransactionService;
 
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -41,7 +40,7 @@ public class TransactionController {
     public ResponseEntity<List<Long>> findTransactionIdsByType(
             @PathVariable String type) {
 
-        List<Long> transactionIds = Collections.emptyList();
+        List<Long> transactionIds = service.findTransactionIdsByType(type);
 
         return ResponseEntity.ok(transactionIds);
     }
