@@ -65,3 +65,10 @@ cuando fuera conveniente antes de continuar con el siguiente caso.
 Busqué que el código fuera fácil de entender por sí mismo, utilizando 
 nombres descriptivos para clases, métodos y tests, evitando usar 
 comentarios.
+
+## 9. Tests de integración
+
+Los tests de integración se encuentran en `TransactionControllerTest`. 
+Utilizan `@SpringBootTest` y `MockMvc` para probar los endpoints HTTP 
+con los componentes reales de la aplicación, verificando su interacción
+entre las distintas capas.
